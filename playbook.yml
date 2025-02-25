@@ -1,0 +1,18 @@
+---
+- name: provision
+  hosts: localhost
+  tasks:
+    - name: add host
+      ansible.builtin.add_host:
+        name: '192.168.7.5'
+        ansible_host: '192.168.7.5'
+        groups: just_created
+        
+- name: configure
+  hosts: just_created
+  tasks:
+    - name: debug
+      debug:
+        msg: "{{ ansible_host }}"
+    - name: ping
+      ping:
