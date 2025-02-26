@@ -1,6 +1,7 @@
 ---
 - name: provision
   hosts: localhost
+  connection: local
   tasks:
     - name: add host
       ansible.builtin.add_host:
@@ -10,6 +11,7 @@
         
 - name: configure
   hosts: just_created
+  connection: ssh
   tasks:
     - name: debug
       debug:
